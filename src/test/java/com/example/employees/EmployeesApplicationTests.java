@@ -1,6 +1,8 @@
 package com.example.employees;
 
+import com.example.employees.models.Department;
 import com.example.employees.models.Employee;
+import com.example.employees.repositories.DepartmentRepository;
 import com.example.employees.repositories.EmployeeRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,13 +17,18 @@ public class EmployeesApplicationTests {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
+	@Autowired
+	DepartmentRepository departmentRepository;
+
 	@Test
 	public void contextLoads() {
 	}
 
 	@Test
-	public void createEmployee(){
-		Employee gerry = new Employee("Gerry", 45, "ger3456", "gwaterston@yaboo.com");
+	public void createEmployeeInDepartment(){
+		Department it = new Department("IT");
+		departmentRepository.save(it);
+		Employee gerry = new Employee("Raul", 21, "ABC123", "raul@gmail.com", it);
 		employeeRepository.save(gerry);
 	}
 
